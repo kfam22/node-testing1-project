@@ -39,7 +39,13 @@ function trimPropertiesMutation(obj) {
  * findLargestInteger([{ integer: 1 }, { integer: 3 }, { integer: 2 }]) // returns 3
  */
 function findLargestInteger(integers) {
-  // ✨ implement
+  let largestInt = integers[0].integer
+  for (let i = 0; i < integers.length; i++){
+    if(largestInt < integers[i].integer){
+      largestInt = integers[i].integer
+    }
+  }
+  return largestInt
 }
 
 class Counter {
@@ -48,7 +54,7 @@ class Counter {
    * @param {number} initialNumber - the initial state of the count
    */
   constructor(initialNumber) {
-    // ✨ initialize whatever properties are needed
+    this.count = initialNumber
   }
 
   /**
@@ -64,7 +70,8 @@ class Counter {
    * counter.countDown() // returns 0
    */
   countDown() {
-    // ✨ implement
+    return this.count > 0 ? this.count-- : this.count
+    //postfixed decrement(or increment vs prefixed https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Increment)
   }
 }
 
@@ -74,6 +81,8 @@ class Seasons {
    */
   constructor() {
     // ✨ initialize whatever properties are needed
+    this.seasons = ['summer', 'fall', 'winter', 'spring']
+    this.currentSeason = 0
   }
 
   /**
@@ -90,6 +99,9 @@ class Seasons {
    */
   next() {
     // ✨ implement
+    let result = this.seasons[this.currentSeason]
+    this.currentSeason === 3 ? this.currentSeason = 0 : this.currentSeason++
+    return result
   }
 }
 
